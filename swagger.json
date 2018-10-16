@@ -1,0 +1,80 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a simple API",
+    "version" : "1.0.0",
+    "title" : "Simple Crawler API",
+    "contact" : {
+      "email" : "jota.jpv@hotmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/jpvieiragit/PontoTel/1.0.0",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/search" : {
+      "post" : {
+        "description" : "When you pass the appropriate options, you can search number of events per keyword",
+        "operationId" : "search",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "keyword",
+          "description" : "Word you want to search",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Search"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Events"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Search" : {
+      "type" : "object",
+      "required" : [ "keyword", "urls" ],
+      "properties" : {
+        "keyword" : {
+          "type" : "string",
+          "example" : "Data Science"
+        },
+        "urls" : {
+          "type" : "string",
+          "example" : ""
+        }
+      },
+      "example" : {
+        "urls" : "",
+        "keyword" : "Data Science"
+      }
+    },
+    "Events" : {
+      "type" : "object",
+      "properties" : {
+        "events" : {
+          "type" : "string",
+          "example" : ""
+        }
+      },
+      "example" : {
+        "events" : ""
+      }
+    }
+  }
+}
